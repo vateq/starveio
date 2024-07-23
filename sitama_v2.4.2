@@ -1,0 +1,2343 @@
+const aa = {
+  drop: 24,
+  dropall: 31,
+  extPut: 27,
+  extTake: 37,
+  placeBuild: 22,
+  joinTotem: 17,
+  angle: 0,
+  attack: 36,
+  stopAttack: 16,
+  chestPut: 1,
+  chestTake: 8,
+  equip: 34,
+  recycle: 18,
+  craft: 26,
+  revive: 33
+};
+const ba = {
+  healtimer: 10
+};
+const e = new Image();
+e.src = "https://raw.githubusercontent.com/XmreLoux/images/main/sandstorm.png";
+const o = new Image();
+o.src = "https://raw.githubusercontent.com/XmreLoux/images/main/blizzard.png";
+let n;
+let a;
+let ca;
+let da;
+let i;
+let s;
+let c;
+let y;
+let d = {
+  ColoredSpikes: true,
+  announcer: false,
+  SwordInchest: {
+    enabled: false,
+    key: "KeyE"
+  },
+  AutoSpike: {
+    key: "Space",
+    enabled: false
+  },
+  POD: {
+    enabled: false,
+    key: "KeyJ"
+  },
+  ZMA: {
+    enabled: false,
+    ley: "KeyJ"
+  },
+  AutoPutRed: {
+    key: "KeyP",
+    enabled: false
+  },
+  xray: {
+    key: "KeyX",
+    opacity: 0.5,
+    enabled: false
+  },
+  drawID: true,
+  drawCircle: true,
+  Trace: true,
+  CircleSize: 40,
+  BoxOnTop: true,
+  drop: {
+    key: "KeyN",
+    enabled: false
+  },
+  roofs: true,
+  AMB: {
+    enabled: false,
+    key: "KeyF",
+    a: null,
+    t: null
+  },
+  AutoFeed: {
+    enabled: false
+  },
+  AutoRespawn: {
+    enabled: false,
+    key: "NULL"
+  },
+  dropsword: {
+    enabled: false,
+    key: "KeyV"
+  },
+  AutoCrown: {
+    enabled: false,
+    key: "KeyZ"
+  },
+  AutoCraft: {
+    enabled: false,
+    key: "KeyC"
+  },
+  Spectator: {
+    enabled: false,
+    key: "KeyP",
+    keyMode: "press",
+    speed: 0.5
+  },
+  AutoRecycle: {
+    enabled: false,
+    key: "KeyL"
+  },
+  pathfinder: {
+    enabled: false,
+    key: "Numpad1",
+    x: null,
+    y: null,
+    chaseid: null,
+    movetoenemy: false
+  },
+  zmaafk: {
+    enabled: false,
+    key: "keyQ"
+  },
+  AutoSteal: {
+    enabled: false,
+    key: "KeyQ",
+    draw: true
+  },
+  AutoTotem: {
+    enabled: false,
+    key: "KeyH"
+  },
+  ExtractorInfo: {
+    enabled: true
+  },
+  ExtractorSteal: {
+    enabled: false,
+    key: "KeyI"
+  },
+  ExtractorPut: {
+    enabled: false,
+    key: "KeyP"
+  },
+  Autofarm: {
+    enabled: false,
+    water: false,
+    key: "NONE",
+    keyMode: "press",
+    angle: null,
+    x: 0,
+    y: 0,
+    xx: 0,
+    yy: 0,
+    sx: 0,
+    sy: 0
+  },
+  nows: {
+    autoextractortake: Date.now(),
+    autoextractorput: Date.now(),
+    autobreadtake: Date.now(),
+    autobreadput: Date.now(),
+    autocraft: Date.now(),
+    autorecycle: Date.now(),
+    autosteal: Date.now(),
+    autobuild: Date.now(),
+    autototem: Date.now(),
+    autoseed: Date.now(),
+    autocrown: Date.now(),
+    dropsword: Date.now(),
+    SwordInchest: Date.now(),
+    autospike: Date.now(),
+    autofarm: Date.now()
+  }};
+let r = console.log;
+unsafeWindow.log = r;
+r(unsafeWindow);
+let l = Symbol();
+Object.defineProperty(Object.prototype, "timeout", {
+  get() {
+    return this[l]; },
+  set(a) {
+    this[l] = a;
+    if (!da) {
+      da = this;
+      r(da);
+      unsafeWindow.client = da;
+    }}
+});
+Object.defineProperty(Object.prototype, "mapping", {
+  get() {
+    return this[l];
+  },
+  set(a) {
+    this[l] = a;
+    if (!i) {
+      i = this;
+      r(i);
+      unsafeWindow._this = i;
+    }}
+});
+Object.defineProperty(Object.prototype, "options", {
+  get() {
+    return this[l];
+  },
+  set(a) {
+    this[l] = a;
+    if (!s) {
+      if (this.sign) {
+        s = this;
+        r(s);
+        unsafeWindow.game = s;
+      }}}
+});
+Object.defineProperty(Object.prototype, "IDLE", {
+  get() {
+    return this[l];
+},
+  set(a) {
+    this[l] = a;
+    if (!y) {
+      y = this;
+      r(y);
+      unsafeWindow.mouse = y;
+}}
+});
+Object.defineProperty(Object.prototype, "opacity", {
+  get() {
+    if (d.roofs) {
+      this[l] = 0.25;
+}
+    return this[l];
+},
+  set(a) {this[l] = a;}
+});
+
+Object.defineProperty(Screen.prototype, "width", {
+  get: function () {
+    return 3840;},
+  set: function (a) {
+    this[l] = a;}
+});
+Object.defineProperty(Screen.prototype, "height", {
+  get: function () {
+    return 2160;
+  },
+  set: function (a) {
+    this[l] = a;
+  }
+});
+Object.defineProperty(Object.prototype, "mode", {
+  get() {
+    return this[l];},
+  set(a) {
+    this[l] = a;
+    if (!ca) {
+      ca = this;
+      r(ca);
+      unsafeWindow.world = ca;}}});
+Object.defineProperty(Object.prototype, "control", {
+  get() {
+    return this[l];},
+  set(a) {
+    this[l] = a;
+    if (!c) {
+      c = this;
+      r(c);
+      unsafeWindow.user = c;
+      (function () {
+        document.getElementById("ssIFrame_google");
+        let a = document.getElementById("preroll");
+        let b = document.getElementById("trevda");
+        let c = document.createElement("style");
+        a.remove();
+        b.remove();
+        c.innerHTML = ".grecaptcha-badge { visibility: hidden; }";
+        document.head.appendChild(c);
+        console.log(a + ":" + b);
+        console.log("removed");
+      })();
+      Y();}}});
+function f(a) {
+  let b;
+  b = Object.keys(da)[0];
+  da[b].send(JSON.stringify(a));
+}
+function h() {
+  let a = Object.keys(ca)[4];
+  return ca[a];
+}
+function b() {
+  const a = Object.values(c)[17];
+  return Object.values(ca)[5][a];
+}
+function m() {
+  return document.getElementById("chat_block").style.display === "inline-block" || document.getElementById("commandMainBox").style.display === "inline-block";
+}
+function k() {
+  const a = Object.values(c)[29];
+  return Object.values(a)[2];
+}
+function g(a) {
+  const b = Object.values(c)[34];
+  const d = Object.values(b)[3];
+  if (d[a] !== 0 && d[a] !== undefined) {
+    return [true, d[a]];
+  } else {
+    return [false, undefined];}}
+function p() {
+  let a = Object.keys(c)[10];
+  return c[a];
+}
+function u() {
+  let a;
+  let b;
+  for (let d in c) {
+    for (let e in c[d]) {
+      switch (e) {
+        case "x":
+          a = c[d][e];
+          break;
+        case "y":
+          b = c[d][e];}}}
+  return [a, b];}
+let w;
+let t;
+let j;
+let v;
+let A;
+let E;
+function I() {
+  let a = b();
+  if (a) {
+    let b = 0;
+    for (let d in a) {
+      if (typeof a[d] == "number") {
+        b++;
+        if (b === 2) {
+          if (a[d] === c.id) {
+            w = d;
+            clearInterval(t);
+          } else {
+            alert("[ERROR] FAILED TO HOOK PID");
+            clearInterval(t);}}}}}}
+function O(a, b, c) {
+  return b >= 0 && c >= 0 && b < a.length && c < a[0].length && a[b][c] === 0;
+}
+function M(b, c, d) {
+  const e = [];
+  let [f, g] = d;
+  while (`${f},${g}` != `${c[0]},${c[1]}`) {
+    const a = b.get(`${f},${g}`);
+    e.push(a.direction);
+    [f, g] = a.parent.split(",").map(Number);
+  }
+  return e.reverse();
+}
+function B(a) {
+  let b = Object.values(c)[21];
+  return a === c.id || b.includes(a);
+}
+function P() {
+  let a = b();
+  if (a) {
+    let b = 0;
+    for (let c in a) {
+      if (typeof a[c] == "number") {
+        b++;
+        if (b === 26) {
+          j = c;
+          clearInterval(v);}}}}}
+function D() {
+  let a = b();
+  if (a) {
+    let b = 0;
+    for (let c in a) {
+      if (typeof a[c] == "number") {
+        b++;
+        if (b === 38) {
+          A = c;
+          clearInterval(E);}}}}}
+unsafeWindow.send = f;
+unsafeWindow.unit = h;
+let C;
+let K = null;
+function R() {
+  requestAnimationFrame(R);
+  let a = Date.now();
+  let c = b();
+  if (d.dropsword.enabled && a - d.nows.dropsword > 20) {
+    if (S(c.right)) {
+      f([aa.dropall, c.right]);
+    }
+    d.nows.dropsword = a;}}
+function q() {
+  if (K === null || K === "null") {
+    [5, 12, 13, 14, 20, 52, 10, 15, 16, 17, 21, 51, 45, 46, 47, 48, 49, 53].forEach(a => {
+      if (h()[a].length > 0) {
+        for (let b in h()[a]) {
+          for (const c in h()[a][b]) {
+            if (typeof h()[a][b][c] == "function") {
+              if (h()[a][b][c].toString().includes("width")) {
+                K = c;
+                clearInterval(C);
+              } else {
+                clearInterval(C);}}}}}});}}
+function F() {
+  const a = b();
+  if (a) {
+    d.pathfinder.x = Math.floor(a.x / 100);
+    d.pathfinder.y = Math.floor(a.y / 100);}}
+function S(a, b) {
+  switch (a) {
+    case 34:
+    case 18:
+    case 33:
+    case 15:
+    case 14:
+    case 13:
+    case 12:
+    case 16:
+    case 17:
+      return 2;
+    case 57:
+    case 5:
+    case 6:
+    case 30:
+    case 62:
+    case 9:
+    case 0:
+    case 63:
+    case 19:
+      return 1;
+    case 64:
+    case 65:
+    case 66:
+    case 67:
+    case 68:
+    case 70:
+    case 69:
+      return 3;
+    case 94:
+    case 95:
+    case 96:
+    case 97:
+    case 98:
+    case 90:
+    case 99:
+      return 6;
+    case 45:
+      if (b) {return 4;}
+    case -1:
+      if (b) {
+        return 5;}}
+  return 0;}
+unsafeWindow.sp = q;
+const L = g => {
+  let h = Object.keys(c)[29];
+  let i = Object.keys(h)[1];
+  let j = b();
+  if (typeof g.data == "string") {
+    if ((g = JSON.parse(g.data))[0] === 2) {
+      if (d.announcer) {
+        r(g[2] + "|" + g[1]);
+        f([8, g[2] + "|" + g[1]]);
+        j.text.push(g[2] + "|" + g[1]);}}} else {
+    let b = new Uint8Array(g.data);
+    if (b[0] === 16) {
+     let hp = b[1];
+      if (Math.floor(11 - (Date.now() - ba.healtimer) / 1000) < 5 || hp > c[h][i]) {
+        ba.healtimer = Date.now();}
+r(hp);}}
+};
+function N() {
+  requestAnimationFrame(N);
+  let a = Object.keys(da)[0];
+  if (b()) {
+    if (!da[a].current) {
+      da[a].current = true;
+      da[a].addEventListener("message", L);}}}
+const z = {
+  8: [-1, 0],
+  4: [1, 0],
+  1: [0, 1],
+  2: [0, -1]};
+function T() {
+  let c = b();
+  if (d.zmaafk.enabled && c && p() === true) {
+    let a = Object.keys(da)[122];
+    const b = {
+      x: Math.floor(c.x / 100),
+      y: Math.floor(c.y / 100)
+    };
+    if (b.x === 0 && b.y === 29) {
+      da[a](4);
+    } else if (b.x === 0 && b.y === 34) {
+      da[a](8);
+    }
+  }
+  if (d.POD.enabled && c && p() === true) {
+    let a = Object.keys(da)[122];
+    const b = {
+      x: Math.floor(c.x / 100),
+      y: Math.floor(c.y / 100)
+    };
+    if (b.x === 48 && b.y === 48) {
+      da[a](8);
+    } else if (b.x === 48 && b.y === 45) {
+      let direction = 1;
+      da[a](1);
+    } else if (b.x === 44 && b.y === 46) {
+      da[a](8);
+    }
+  }
+  if (d.ZMA.enabled && c && p() === true) {
+    let a;
+    let b = Object.keys(da)[122];
+    const d = {
+      x: Math.floor(c.x / 100),
+      y: Math.floor(c.y / 100)
+    };
+    if (d.x === 67 && d.y === 12) {
+      a = 4;
+      da[b](4);
+    } else if (d.x === 67 && d.y === 15) {
+      a = 1;
+      da[b](1);
+    }
+  }
+  let e = (b, c) => {
+    let d = b.y;
+    let e = b.x;
+    let f = c ? c.x : x;
+    let a = c ? c.y : 0;
+    let g = 0;
+    if (d < a - 25 && c) {
+      g += 4;
+    }
+    if (d > a + 25 && c) {
+      g += 8;
+    }
+    if (e < f - 25) {
+      g += 2;
+    }
+    if (e > f + 25) {
+      g += 1;
+    }
+    return g;
+  };
+  if (d.pathfinder.movetoenemy && p() === true && c) {
+    Math.floor(c.x / 100);
+    Math.floor(c.y / 100);
+    Math.floor(32);
+    Math.floor(32);
+    let b = Object.keys(da)[122];
+    for (let a = 0; a < h()[0].length; a++) {
+      if (h()[0][a][w] == d.pathfinder.chaseid) {
+        var f = 0;
+        var g = {
+          x: 0,
+          y: 0
+        };
+        g.x = Math.floor(h()[0][a].x / 100);
+        g.y = Math.floor(h()[0][a].y / 100);
+        c.y;
+        h()[0][a].y;
+        if (+(c.x - h()[0][a].x)) {
+          f = e(c, h()[0][a]);
+          r(f);
+          da[b](f);
+        }
+      }
+    }
+  }
+  if (d.pathfinder.enabled && c && p() === true && d.pathfinder.x != null && d.pathfinder.y != null) {
+    const b = {
+      x: Math.floor(c.x / 100),
+      y: Math.floor(c.y / 100)
+    };
+    const e = Array.from({
+      length: 6
+    }, (a, b) => b + 63);
+    const f = Array.from({
+      length: 6
+    }, (a, b) => b + 10);
+    unsafeWindow.wrld.nw;
+    let g = unsafeWindow.wrld.nh;
+    const a = {
+      x: Math.floor(d.pathfinder.x),
+      y: Math.floor(d.pathfinder.y)
+    };
+    if (e.includes(b.x) && f.includes(b.y)) {
+      r("hi");
+    } else {
+      (function (b, d, f) {
+        const [e, g] = d;
+        const [h, i] = f;
+        if (!O(b, e, g) || !O(b, h, i)) {
+          return [];
+        }
+        const j = [[e, g]];
+        const k = new Set([`${e},${g}`]);
+        const c = new Map();
+        while (j.length > 0) {
+          const [e, g] = j.shift();
+          if (e === h && g === i) {
+            let a = Object.keys(da)[122];
+            const b = M(c, d, f);
+            b.forEach(b => da[a](b));
+            return b;
+          }
+          for (const [a, [d, f]] of Object.entries(z)) {
+            const h = e + d;
+            const l = g + f;
+            if (O(b, h, l) && !k.has(`${h},${l}`)) {
+              j.push([h, l]);
+              k.add(`${h},${l}`);
+              c.set(`${h},${l}`, {
+                parent: `${e},${g}`,
+                direction: Number(a)});}}}})(g, b, a);}}}
+function G() {
+  requestAnimationFrame(G);
+  if (d.drop.enabled) {
+    f([aa.dropall, 7]);
+  }
+}
+function H() {
+  requestAnimationFrame(H);
+  let c = b();
+  const e = Date.now();
+  function i(a, b) {
+    return Math.sqrt((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y));
+  }
+  if (e - d.nows.SwordInchest > 80) {
+    if (p() === true && m() === false && d.SwordInchest.enabled) {
+      var j = h()[11];
+      for (let a = 0; a < j.length; ++a) {
+        if (S(c.right) && i(c, j[a]) <= 330) {
+          f([aa.chestPut, c.right, 10, j[a][w], j[a].id]);
+          f([aa.chestTake, j[a][w], j[a].id]);
+        } else if (S(c.right) && g(167) && !i(c, j[a]) <= 330) {
+          let a = Math.PI * 2;
+          let b = Math.floor((c.angle + a) % a * 255 / a);
+          f([aa.placeBuild, 167, b, 0]);
+          for (let a = 10; a < 30; a += 3) {
+            f([aa.placeBuild, 167, (-a + b) % 255, 0]);
+            f([aa.placeBuild, 167, (a + b) % 255, 0]);}}}}
+    d.nows.SwordInchest = e;}}
+function W() {
+  requestAnimationFrame(W);
+  let a = h()[0];
+  let c = b();
+  const e = document.getElementById("game_canvas").getContext("2d");
+  if (d.drawID && c && p() === true) {
+    let b = Object.values(h()[0])[0];
+    let c = Object.keys(b)[1];
+    for (let b of a) {
+      e.lineWidth = 4;
+      e.strokeStyle = "black";
+      e.font = "30px Baloo Paaji";
+      e.strokeText(b[c], u()[0] + b.x, u()[1] + b.y + 70);
+      e.fillStyle = "red";
+      e.fillText(b[c], u()[0] + b.x, u()[1] + b.y + 70);
+    }
+  }
+  if (d.drawCircle && c && p() === true) {
+    let b = Object.values(h()[0])[0];
+    let c = Object.keys(b)[1];
+    for (let b of a) {
+      e.beginPath();
+      e.arc(u()[0] + b.x, u()[1] + b.y, d.CircleSize, 0, 2 * Math.PI);
+      e.strokeStyle = "red";
+      e.stroke();
+      e.closePath();
+    }
+  }
+  if (d.Trace && c && p() === true) {
+    let mainPlayer = a[0];
+    let mainPlayerX = u()[0] + mainPlayer.x;
+    let mainPlayerY = u()[1] + mainPlayer.y;
+    for (let b of a) {
+      let playerX = u()[0] + b.x;
+      let playerY = u()[1] + b.y;
+      e.beginPath();
+      e.moveTo(mainPlayerX, mainPlayerY);
+      e.lineTo(playerX, playerY);
+      e.lineWidth = 3;
+      e.strokeStyle = "black";
+      e.stroke();
+      e.closePath();
+    }
+  }
+}
+function X() {
+  function c(b, c, d) {
+    let e = Object.keys(ca)[14];
+    let f = Object.values(ca[e])[1];
+    const a = document.getElementById("game_canvas").getContext("2d");
+    if (ca.transition) {
+      a.globalAlpha = 1;
+      b[K](c, d);
+      ca.time = ca.time ? 0 : 1;
+      a.globalAlpha = 1 - f;
+      b[K](c, d);
+      ca.time = ca.time ? 0 : 1;
+      a.globalAlpha = 1;
+    } else {
+      b[K](c, d);
+    }
+  }
+  const e = document.getElementById("game_canvas").getContext("2d");
+  requestAnimationFrame(X);
+  let a = b();
+  if (d.BoxOnTop && a && p() === true) {
+    let b = h()[86];
+    let d = h()[82];
+    for (let d = 0; d < b.length; d++) {
+      let f = b[d];
+      c(f, 250, 729);
+      e.lineWidth = 7;
+      e.strokeStyle = "black";
+      e.font = "22px Baloo Paaji";
+      e.strokeText("BOX", u()[0] + f.x, u()[1] + f.y);
+      e.fillStyle = "white";
+      e.fillText("BOX", u()[0] + f.x, u()[1] + f.y);
+    }
+    for (let b = 0; b < d.length; b++) {
+      let f = d[b];
+      c(f, 250, 729);
+      e.strokeText("Dead BOX", u()[0] + f.x, u()[1] + f.y);
+      e.fillStyle = "white";
+      e.fillText("Dead BOX", u()[0] + f.x, u()[1] + f.y);
+    }
+  }
+}
+const Y = () => {
+  new MutationObserver(function (a) {
+    for (const b of a) {
+      for (const a of b.addedNodes) {
+        if (a.src && (a.src.includes("server.cmpstar.net") || a.src.includes("sdk.truepush.com") || a.src.includes("sdki.truepush.com") || a.src.includes("adinplay") || a.src.includes("amazon-adsystem.com") || a.src.includes("www.google-analytics.com") || a.src.includes("ib.adnxs.com") || a.src.includes("targeting.unrulymedia.com") || a.src.includes("www.google-analytics.com") || a.src.includes("pagead2.googlesyndication.com") || a.src.includes("doubleclick.net") || a.src.includes("script.4dex.io"))) {
+          a.src = "";
+          a.innerHTML = "";
+          a.textContent = "";
+        }
+        if (a.className === "wg-ad-container") {
+          setTimeout(function () {
+            const a = document.querySelector(".wg-ad-player");
+            a.currentTime = 20;
+            a.parentElement.style.display = "none";
+          }, 1);
+        }
+      }
+    }
+  }).observe(document, {
+    childList: true,
+    attributes: true,
+    subtree: true
+  });
+};
+function J() {
+  let c = b();
+  if (p() === true && m() === false && d.AutoPutRed.enabled) {
+    var e = h()[11];
+    for (let a = 0; a < e.length; ++a) {
+      g = c;
+      i = e[a];
+      if (Math.sqrt((i.x - g.x) * (i.x - g.x) + (i.y - g.y) * (i.y - g.y)) <= 330) {
+        f([aa.chestPut, 202, 10, e[a][w], e[a].id]);
+        f([aa.chestPut, 111, 10, e[a][w], e[a].id]);
+      }
+    }
+  }
+  var g;
+  var i;
+}
+let U = {
+  Autofarm: Date.now()
+};
+function V() {
+  let i = Object.keys(da)[122];
+  let j = b();
+  requestAnimationFrame(V);
+  if (d.Autofarm.enabled && Date.now() - U.Autofarm > 50) {
+    let b = {
+      obj: null,
+      dist: -1,
+      type: 0
+    };
+    var e = {
+      x: d.Autofarm.x,
+      y: d.Autofarm.y,
+      width: d.Autofarm.xx - d.Autofarm.x,
+      height: d.Autofarm.yy - d.Autofarm.y
+    };
+    for (var k = 0, n = [...h()[3], ...h()[31], ...h()[37], ...h()[39], ...h()[40], ...h()[43], ...h()[44], ...h()[54], ...h()[55]], l = n.length, o = null, p = null; k < l; ++k) {
+      if ((o = n[k]).info && o.info !== 10 && (d.Autofarm.water || o.info !== 16) && e.x < o.x - 50 + 100 && e.x + e.width > o.x - 50 && e.y < o.y - 50 + 100 && e.y + e.height > o.y - 50) {
+        let a = Object.keys(y)[4];
+        if (d.Autofarm.enabled && d.Autofarm.angle != null) {
+          y[a].x = u()[0] + o.x;
+          y[a].y = u()[1] + o.y;
+        }
+        p = (j.x - o.x) ** 2 + (j.y - o.y) ** 2;
+        if (b.dist === -1 || p < b.dist) {
+          b.dist = p;
+          b.obj = o;
+        }
+      }
+    }
+    if (b.obj) {
+      q = j;
+      t = b.obj;
+      b.dist = q && t ? Math.sqrt((q.x - t.x) ** 2 + (q.y - t.y) ** 2) : null;
+      switch (b.obj.info) {
+        case 1:
+        case 2:
+        case 3:
+          r("uwu");
+          if (g(54)[0]) {
+            if (j.right !== 54) {
+              f([aa.equip, 54]);
+            }
+          } else if (g(53)[0] && j.right !== 53) {
+            f([aa.equip, 53]);
+          }
+          b.type = 2;
+          break;
+        case 16:
+        case 17:
+        case 18:
+        case 19:
+          if (d.Autofarm.water) {
+            if (g(49)[0]) {
+              if (j.right !== 49) {
+                f([aa.equip, 49]);
+              }
+              b.type = 1;
+            }
+          } else {
+            if (g(54)[0]) {
+              if (j.right !== 54) {
+                f([aa.equip, 54]);
+              }
+            } else if (g(53)[0] && j.right !== 53) {
+              f([aa.equip, 53]);
+            }
+            b.type = 2;
+          }
+      }
+      let c = {
+        x: j.x - b.obj.x,
+        y: j.y - b.obj.y
+      };
+      let e = {
+        x: Math.abs(j.x - b.obj.x),
+        y: Math.abs(j.y - b.obj.y)
+      };
+      let a = 0;
+      if (e.x > 60) {
+        if (c.x > 50) {
+          a += 1;
+        }
+        if (c.x < 50) {
+          a += 2;
+        }
+      }
+      if (e.y > 60) {
+        if (c.y > 50) {
+          a += 8;
+        }
+        if (c.y < 50) {
+          a += 4;
+        }
+      }
+      da[i](a);
+      if (e.x < (b.type === 1 ? 120 : 300) && e.y < (b.type === 1 ? 120 : 300)) {
+        d.Autofarm.angle = function (a, b, c) {
+          if (a && b) {
+            if (c) {
+              return Math.atan2(b.r.y - a.r.y, b.r.x - a.r.x);
+            } else {
+              return Math.atan2(b.y - a.y, b.x - a.x);
+            }
+          } else {
+            return null;
+          }
+        }(j, b.obj, true);
+        let a = Math.PI * 2;
+        let c = Math.floor((d.Autofarm.angle + a) % a * 255 / a);
+        if (d.Autofarm.angle) {
+          f([aa.attack, c]);
+          f([aa.stopAttack]);
+        }
+      }
+    } else {
+      let b = {
+        x: j.x - d.Autofarm.sx,
+        y: j.y - d.Autofarm.sy
+      };
+      let c = {
+        x: Math.abs(j.x - d.Autofarm.sx),
+        y: Math.abs(j.y - d.Autofarm.sy)
+      };
+      let e = 0;
+      if (c.x > 60) {
+        if (b.x > 0) {
+          e += 1;
+        }
+        if (b.x < 0) {
+          e += 2;
+        }
+      }
+      if (c.y > 60) {
+        if (b.y > 0) {
+          e += 8;
+        }
+        if (b.y < 0) {
+          e += 4;
+        }
+      }
+      da[i](e);
+    }
+    U.Autofarm = Date.now();
+  }
+  var q;
+  var t;
+}
+function Q() {
+  requestAnimationFrame(Q);
+  let c = b();
+  if (d.AMB.enabled && c && p() === true) {
+    let b;
+    switch (S(c.right, true)) {
+      case 1:
+        b = c[j] ? 196.8 : 157.6;
+        break;
+      case 2:
+        b = c[j] ? 291.8 : 227.6;
+        break;
+      case 3:
+        b = 620;
+        break;
+      case 4:
+        b = c[j] ? 140 : 125;
+        break;
+      case 5:
+        b = c.clothe == 85 || c.clothe == 83 ? c[j] ? 120.8 : 97.6 : null;
+        break;
+      default:
+        b = null;
+    }
+    if (b) {
+      const a = function (b, c) {
+        let e = null;
+        let f = -1;
+        let g = S(b.right, false) === 2;
+        for (var a = 0, h = null, k = null; a < c.length; ++a) {
+          if ((h = c[a])[w] !== b[w] && !B(h[w]) && !B(h[w]) && b[j] === h[j] && !h.ghost) {
+            k = (b.x - h.x) ** 2 + (b.y - h.y) ** 2;
+            if (g && k < 210) {
+              continue;
+            }
+            if (f === -1 || k < f) {
+              f = k;
+              e = h;
+            }
+          }
+        }
+        let m = Object.keys(y)[4];
+        if (d.AMB.enabled && d.AMB.a != null) {
+          y[m].x = u()[0] + e.x;
+          y[m].y = u()[1] + e.y;
+        }
+        return e;
+      }(c, h()[0]);
+      if (a) {
+        g = a;
+        const h = (e = c) && g ? Math.sqrt((e.x - g.x) ** 2 + (e.y - g.y) ** 2) : null;
+        if (h <= b) {
+          d.AMB.a = function (a, b, c) {
+            if (a && b) {
+              if (c) {
+                return Math.atan2(b.r.y - a.r.y, b.r.x - a.r.x);
+              } else {
+                return Math.atan2(b.y - a.y, b.x - a.x);
+              }
+            } else {
+              return null;
+            }
+          }(c, a, true);
+          d.AMB.t = a;
+          const e = Math.PI * 2;
+          const g = Math.floor((d.AMB.a + e) % e * 255 / e);
+          f([aa.angle, g]);
+          if (d.AMB.a && h <= b - 22 && c.right !== 45) {
+            f([aa.attack, g]);
+            f([aa.stopAttack]);
+          }
+        } else {
+          d.AMB.a = null;
+          d.AMB.t = null;
+        }
+      } else {
+        d.AMB.a = null;
+      }
+    }
+  }
+  var e;
+  var g;
+}
+function Z() {
+    requestAnimationFrame(Z);
+    const a = document.getElementById("game_canvas").getContext("2d");
+
+    if (p() === true) {
+        let b = Object.values(c)[36];
+        const d = Math.floor(11 - (Date.now() - ba.healtimer) / 1000) + "s";
+
+        a.save();
+        a.beginPath();
+        a.lineWidth = 7;
+        a.fillStyle = "red";
+        a.strokeStyle = "black";
+        a.font = "34px Baloo Paaji";
+
+        let textWidth = a.measureText(d).width;
+        let posX = b.translate.x - textWidth / 312;
+        let posY = b.translate.y + 800;
+
+        a.strokeText(d, posX, posY);
+        a.fillText(d, posX, posY);
+        a.restore();
+    }
+}
+
+function $() {
+  requestAnimationFrame($);
+  if (p() === true && k() < 0.6 && !window.AutoEatWait) {
+    unsafeWindow.AutoEatWait = true;
+    const a = [110, 117];
+    for (const b of a) {
+      if (g(b)) {
+        f([aa.equip, b]);
+      }
+    }
+    setTimeout(() => {
+      unsafeWindow.AutoEatWait = false;
+    }, 500);
+  }
+}
+function _() {
+  requestAnimationFrame(_);
+  let b = Object.keys(c)[47];
+  let d = Object.keys(c)[46];
+  let f = Object.keys(d)[1];
+  let a = Object.values(c)[36];
+  var g = -8;
+  const h = document.getElementById("game_canvas").getContext("2d");
+  if (p() === true && c[b][f]) {
+    h.save();
+    h.drawImage(o, a.translate.x, a.translate.y + g);
+    g += 100;
+  }
+  if (p() === true && c[d][f]) {
+    h.save();
+    h.drawImage(e, a.translate.x, a.translate.y + g);
+    g += 120;
+  }
+}
+function ea() {
+  requestAnimationFrame(ea);
+  document.getElementById("game_canvas").getContext("2d");
+  if (s.sign === undefined) {
+    const a = document.getElementById("game_canvas").getContext("2d");
+    a.save();
+    a.beginPath();
+    a.lineWidth = 6;
+    a.fillStyle = "red";
+    a.strokeStyle = "black";
+    a.font = "22px Baloo Paaji";
+    a.strokeText("chest infos not gona work. refresh page", 3, 500);
+    a.fillText("chest infos not gona work. refresh page", 3, 500);
+    a.restore();
+  }
+}
+function fa() {
+  requestAnimationFrame(fa);
+  try {
+    unsafeWindow.ctx = document.getElementById("game_canvas").getContext("2d");
+  } catch (a) {
+    return;
+  }
+  let a = 22.5;
+  for (hack in d) {
+    if (d[hack].enabled && d[hack].key) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.lineWidth = 6;
+      ctx.fillStyle = "red";
+      ctx.strokeStyle = "black";
+      ctx.font = "22px Baloo Paaji";
+      ctx.strokeText(hack, 3, a);
+      ctx.fillText(hack, 3, a);
+      ctx.restore();
+      a += 22.5;
+    }
+  }
+}
+function ga() {
+  requestAnimationFrame(ga);
+  const a = Date.now();
+  let c = b();
+  if (a - d.nows.autoextractortake > 100) {
+    [24, 25, 26, 27, 28, 29].forEach(b => {
+      var e;
+      var g;
+      var i = h()[b];
+      if (p() === true && m() === false && d.ExtractorSteal.enabled) {
+        for (let a = 0; a < i.length; ++a) {
+          e = c;
+          g = i[a];
+          if (Math.sqrt((g.x - e.x) * (g.x - e.x) + (g.y - e.y) * (g.y - e.y)) <= 330) {
+            f([aa.extTake, i[a][w], i[a].id, b]);
+          }
+        }
+      }
+    });
+    d.nows.autoextractortake = a;
+  }
+}
+function ha() {
+  requestAnimationFrame(ha);
+  const a = Date.now();
+  let c = b();
+  if (a - d.nows.autoextractorput > 100) {
+    [24, 25, 26, 27, 28, 29].forEach(b => {
+      var e;
+      var g;
+      var i = h()[b];
+      if (p() === true && m() === false && d.ExtractorPut.enabled) {
+        for (let a = 0; a < i.length; ++a) {
+          e = c;
+          g = i[a];
+          if (Math.sqrt((g.x - e.x) * (g.x - e.x) + (g.y - e.y) * (g.y - e.y)) <= 330) {
+            f([aa.extPut, 68, i[a][w], i[a].id, b]);
+          }
+        }
+      }
+    });
+    d.nows.autoextractorput = a;
+  }
+}
+function ia() {
+  let c = b();
+  if (p() === true && m() === false && d.AutoSteal.enabled) {
+    var e = h()[11];
+    for (let a = 0; a < e.length; ++a) {
+      g = c;
+      i = e[a];
+      if (Math.sqrt((i.x - g.x) * (i.x - g.x) + (i.y - g.y) * (i.y - g.y)) <= 330) {
+        f([aa.chestTake, e[a][w], e[a].id]);
+      }
+    }
+  }
+  var g;
+  var i;
+}
+
+function xray() {
+    document.getElementById('game_canvas').getContext('2d').drawImage = new Proxy( document.getElementById('game_canvas').getContext('2d').drawImage, {
+        apply() {
+            if ( d.xray.enabled ) arguments[1].globalAlpha = d.xray.opacity;
+            return Reflect.apply(...arguments)
+        }
+    })
+}
+
+function ja(b, d, e, f, g, a, h, j, i, k) {
+  if (d.tryLoad === undefined || d.tryLoad() === 1) {
+    if (k !== undefined) {
+      b.drawImage(d, e, f, Math.max(1, g), Math.max(1, a), h, j, i, k);
+    } else if (a !== undefined) {
+      b.drawImage(d, e, f, g, a);
+    } else {
+      b.drawImage(d, e, f);
+    }
+  }
+}
+function ka() {
+  requestAnimationFrame(ka);
+  const a = document.getElementById("game_canvas").getContext("2d");
+  Object.keys(s)[44];
+  let b = h()[11];
+  for (let c of b) {
+    let b;
+    let d;
+    let e = Object.keys(s)[44];
+    let f = c.action / 2 - 1;
+    let g = s[e][f]?.info;
+    if (c.action) {
+      d = Object.keys(g)[2];
+      b = g[d][0];
+      a.save();
+      a.globalAlpha = 0.9;
+      ja(a, b, u()[0] + c.x - 25, u()[1] + c.y - 25, 67, 52);
+      a.globalAlpha = 1;
+      a.font = "20px Baloo Paaji";
+      a.strokeStyle = "black";
+      a.lineWidth = 7;
+      a.strokeText("x" + c.info, u()[0] + c.x - 12, u()[1] + c.y + 35);
+      a.fillStyle = "white";
+      a.fillText("x" + c.info, u()[0] + c.x - 12, u()[1] + c.y + 35);
+      a.restore();
+    }
+  }
+}
+function la() {
+  const c = b();
+  const g = document.querySelector("canvas").getContext("2d");
+  requestAnimationFrame(la);
+  const j = h()[29];
+  if (j !== undefined && j.length !== undefined && j.length !== 0) {
+    if (p() === true && m() === false && d.AutoTotem.enabled) {
+      for (let a = 0; a < j.length; ++a) {
+        e = c;
+        i = j[a];
+        if (Math.sqrt((i.x - e.x) * (i.x - e.x) + (i.y - e.y) * (i.y - e.y)) <= 300) {
+          f([aa.joinTotem, j[a][w], j[a].id]);
+        }
+      }
+    }
+    var e;
+    var i;
+    (function () {
+      for (let b = 0; b < j.length; ++b) {
+        const {
+          x: c,
+          y: d,
+          info: a
+        } = j[b];
+        let e = h()[29][b];
+        g.save();
+        g.lineWidth = 8;
+        g.font = "26px Baloo Paaji";
+        g.strokeStyle = "#000";
+        g.fillStyle = e.info >= 16 ? "red" : "lime";
+        g.strokeText(a >= 16 ? "🔒" : "🔓", c - 20 + u()[0], d + u()[1]);
+        g.fillText(a >= 16 ? "🔒" : "🔓", c - 20 + u()[0], d + u()[1]);
+        const f = e.info >= 16 ? "People in totem: " + e.info % 16 : "People in totem: " + e.info;
+        g.font = "16px Baloo Paaji";
+        g.strokeStyle = "black";
+        g.fillStyle = "white";
+        g.fillText(f, e.x - 20 + u()[0], e.y + u()[1] - 30);
+        g.restore();
+        g.restore();
+      }
+    })();
+  }
+}
+function ma() {
+  requestAnimationFrame(ma);
+  Object.keys(da)[119];
+  Object.keys(da)[103];
+  let a = Object.keys(c)[8];
+  let e = b();
+  if (e && !c[a].enabled) {
+    d.AutoCrown.last = e.right;
+  }
+  if (!d.AutoCrown.enabled) {
+    return;
+  }
+  if (!g(79)) {
+    return;
+  }
+  if (!c[a].enabled) {
+    return;
+  }
+  let i = h()[22];
+  if (i.length < 1) {
+    return;
+  }
+  i.forEach(b => {
+    var c;
+    var d;
+    c = b;
+    d = e;
+    if (Math.sqrt((d.x - c.x) * (d.x - c.x) + (d.y - c.y) * (d.y - c.y)) <= 400) {
+      f([aa.revive, b[w], b.id]);
+    }
+  });
+}
+ba.healtimer = Date.now();
+let na = {
+  AutoSpike: true,
+  SwordInChest: true,
+  AutoFarm: true,
+  AutoWall: true,
+  AutoCraft: true
+};
+
+function oa() {
+  requestAnimationFrame(oa);
+  if (m() === false) {
+    let c;
+    if (g(219)[0]) {
+      c = 219;
+    } else if (g(123)[0]) {
+      c = 123;
+    } else if (g(170)[0]) {
+      c = 170;
+    } else if (g(169)[0]) {
+      c = 169;
+    } else if (g(168)[0]) {
+      c = 168;
+    } else if (g(162)[0]) {
+      c = 162;
+    } else if (g(113)[0]) {
+      c = 113;
+    }
+    if (d.AutoSpike.enabled && p() === true && c !== undefined && na.AutoSpike) {
+      na.AutoSpike = false;
+      setTimeout(a => na.AutoSpike = true, 50);
+      let e = Math.PI * 2;
+      let g = b();
+      let h = g.angle;
+      if (d.AMB.a && d.AMB.enabled && S(g.right)) {
+        h = d.AMB.a;
+      }
+      unsafeWindow.wp = g;
+      let a = Math.floor((h + e) % e * 255 / e);
+      f([aa.placeBuild, c, a, 0]);
+      for (let b = 10; b < 30; b += 3) {
+        f([aa.placeBuild, c, (b + a) % 255, 0]);
+        f([aa.placeBuild, c, (-b + a) % 255, 0]);
+      }
+    }
+  }
+}
+
+const pa = {
+  initUI: () => {
+    let a = new guify({
+      title: "Sitama 👻",
+      theme: {
+        name: "Sitama",
+       colors: {
+          panelBackground: "#00000099",
+            componentBackground: "#000000",
+            componentForeground: "#2d6292",
+            textPrimary: "#05b9ae",
+            textSecondary: "#a1b0aa",
+            textHover: "#242a75"
+        },
+        font: {
+          fontFamily: "system-ui",
+          fontSize: "23px",
+          fontWeight: "bold"
+        }
+      },
+      align: "right",
+      width: 550,
+      barMode: "none",
+      panelMode: "none",
+      root: unsafeWindow.container,
+      open: false
+    });
+    a.Register({
+      type: "folder",
+      label: "Visuals",
+      open: false
+    });
+    a.Register({
+      type: "folder",
+      label: "Misc",
+      open: false
+    });
+    a.Register({
+      type: "folder",
+      label: "Binds",
+      open: false
+    });
+    a.Register({
+      type: "folder",
+      label: "Autofarm",
+      open: false
+    });
+    a.Register({
+      type: "folder",
+      label: "PathFinder",
+      open: false
+    });
+    a.Register({
+      type: "folder",
+      label: "xray",
+      open: false
+    });
+    a.Register([{
+      type: "checkbox",
+      label: "ColoredSpikes",
+      object: d,
+      property: "ColoredSpikes",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "Roofs Opacity",
+      object: d,
+      property: "roofs",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "Box Info and on top",
+      object: d,
+      property: "BoxOnTop",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "SHOWID",
+      object: d,
+      property: "drawID",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "Player Circle",
+      object: d,
+      property: "drawCircle",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "Tracers",
+      object: d,
+      property: "Trace",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "range",
+      label: "Circle Size",
+      min: 20,
+      max: 60,
+      step: 2,
+      object: d,
+      property: "CircleSize",
+      onChange() {
+        pa.saveSettings();
+      }
+    }], {
+      folder: "Visuals"
+    });
+    a.Register([{
+      type: "checkbox",
+      label: "AutoExtractor Take",
+      object: d.ExtractorSteal,
+      property: "enabled",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "AutoRespawn",
+      object: d.AutoRespawn,
+      property: "enabled",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "Autocrown",
+      object: d.AutoCrown,
+      property: "enabled",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "AutoExtractor Put",
+      object: d.ExtractorPut,
+      property: "enabled",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "AutoTotem",
+      object: d.AutoTotem,
+      property: "enabled",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "AMB",
+      object: d.AMB,
+      property: "enabled",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "announcer bot",
+      object: d,
+      property: "announcer",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }], {
+      folder: "Misc"
+    });
+    a.Register([{
+      type: "button",
+      label: "Set AutoExtractor Put k",
+      action: a => {
+        pa.controls.setKeyBind("ExtractorPut");
+      }
+    }, {
+      type: "display",
+      label: "AutoExtractor Put k:",
+      object: d.ExtractorPut,
+      property: "key"
+    }, {
+      type: "button",
+      label: "Set AutoExtractor Take k",
+      action: a => {
+        pa.controls.setKeyBind("ExtractorSteal");
+      }
+    }, {
+      type: "display",
+      label: "AutoExtractor Take k:",
+      object: d.ExtractorSteal,
+      property: "key"
+    }, {
+      type: "button",
+      label: "Set AutoTotem k",
+      action: a => {
+        pa.controls.setKeyBind("AutoTotem");
+      }
+    }, {
+      type: "display",
+      label: "AutoTotem k:",
+      object: d.AutoTotem,
+      property: "key"
+    }, {
+      type: "button",
+      label: "Set AutoSpike k",
+      action: a => {
+        pa.controls.setKeyBind("AutoSpike");
+      }
+    }, {
+      type: "display",
+      label: "AutoSpike k:",
+      object: d.AutoSpike,
+      property: "key"
+    }, {
+      type: "button",
+      label: "Set Aimbot k",
+      action: a => {
+        pa.controls.setKeyBind("AMB");
+      }
+    }, {
+      type: "display",
+      label: "Aimbot k:",
+      object: d.AMB,
+      property: "key"
+    }, {
+      type: "button",
+      label: "Set AutoCraft k",
+      action: a => {
+        pa.controls.setKeyBind("AutoCraft");
+      }
+    }, {
+      type: "display",
+      label: "AutoCraft k:",
+      object: d.AutoCraft,
+      property: "key"
+    }, {
+      type: "button",
+      label: "Set AutoCraft k",
+      action: a => {
+        pa.controls.setKeyBind("AutoCraft");
+      }
+    }, {
+      type: "display",
+      label: "AutoRecycle k:",
+      object: d.AutoRecycle,
+      property: "key"
+    }, {
+      type: "button",
+      label: "Set AutoRecycle k",
+      action: a => {
+        pa.controls.setKeyBind("AutoRecycle");
+      }
+    }, {
+      type: "display",
+      label: "DropSword Put k:",
+      object: d.dropsword,
+      property: "key"
+    }, {
+      type: "button",
+      label: "Set DropSword k",
+      action: a => {
+        pa.controls.setKeyBind("dropsword");
+      }
+    }, {
+      type: "display",
+      label: "AutoSteal k:",
+      object: d.AutoSteal,
+      property: "key"
+    }, {
+      type: "button",
+      label: "Set AutoSteaL k",
+      action: a => {
+        pa.controls.setKeyBind("AutoSteal");
+      }
+    }], {
+      folder: "Binds"
+    });
+    a.Register([{
+      type: "checkbox",
+      label: "Start Autofarm",
+      object: d.Autofarm,
+      property: "enabled",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "AutoWater",
+      object: d.Autofarm,
+      property: "water",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "button",
+      label: "Top left of farm",
+      action: a => {
+        let c = b();
+        if (c) {
+          d.Autofarm.x = c.x;
+          d.Autofarm.y = c.y;
+        }
+      }
+    }, {
+      type: "button",
+      label: "Bottom right of farm",
+      action: a => {
+        let c = b();
+        if (c) {
+          d.Autofarm.xx = c.x;
+          d.Autofarm.yy = c.y;
+        }
+      }
+    }, {
+      type: "button",
+      label: "Safe Point",
+      action: a => {
+        let c = b();
+        if (c) {
+          d.Autofarm.sx = c.x;
+          d.Autofarm.sy = c.y;
+        }
+      }
+    }, {
+      type: "display",
+      label: "X",
+      object: d.Autofarm,
+      property: "x"
+    }, {
+      type: "display",
+      label: "Y",
+      object: d.Autofarm,
+      property: "y"
+    }, {
+      type: "display",
+      label: "X1",
+      object: d.Autofarm,
+      property: "xx"
+    }, {
+      type: "display",
+      label: "Y1",
+      object: d.Autofarm,
+      property: "yy"
+    }, {
+      type: "display",
+      label: "SX",
+      object: d.Autofarm,
+      property: "sx"
+    }, {
+      type: "display",
+      label: "SY",
+      object: d.Autofarm,
+      property: "sy"
+    }], {
+      folder: "Autofarm"
+    });
+    a.Register([{
+      type: "checkbox",
+      label: "Pathfinder Enabled",
+      folder: "Pathfinder",
+      object: d.pathfinder,
+      property: "enabled",
+      onChange() {
+        if (pa.saveSettings) {
+          pa.saveSettings();
+        }
+      }
+    }, {
+      type: "checkbox",
+      label: "Chase Enemy",
+      object: d.pathfinder,
+      property: "movetoenemy",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "POD VERIFY",
+      object: d.POD,
+      property: "enabled",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "ZMA VERIFY",
+      object: d.ZMA,
+      property: "enabled",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "checkbox",
+      label: "ZMA AFK BYP ",
+      object: d.zmaafk,
+      property: "enabled",
+      onChange: a => {
+        pa.saveSettings();
+      }
+    }, {
+      type: "range",
+      label: "ChaseID",
+      min: 0,
+      max: 100,
+      step: 1,
+      object: d.pathfinder,
+      property: "chaseid",
+      onChange(a) {
+        pa.saveSettings();
+      }
+    }, {
+      type: "display",
+      label: "Pathfinder Key",
+      folder: "Pathfinder",
+      object: d.pathfinder,
+      property: "key"
+    }, {
+      type: "button",
+      label: "Set Pathfinder Key",
+      folder: "Pathfinder",
+      action() {
+        pa.controls.setKeyBind("pathfinder");
+      }
+    }, {
+      type: "display",
+      label: "Pathfinder X",
+      folder: "Pathfinder",
+      object: d.pathfinder,
+      property: "x"
+    }, {
+      type: "display",
+      label: "Pathfinder Y",
+      folder: "Pathfinder",
+      object: d.pathfinder,
+      property: "y"
+    }, {
+      type: "button",
+      label: "Set Current Player Position",
+      folder: "Pathfinder",
+      action() {
+        if (F) {
+          F();
+        }
+      }
+    }, {
+      type: "button",
+      label: "Go Back To Lobby",
+      folder: "Pathfinder",
+      action() {
+        let a = Object.keys(da)[136];
+        da[a]();
+      }
+    }, {
+      type: "button",
+      label: "Random Token_ID",
+      folder: "Pathfinder",
+      action() {
+        let a = Object.keys(c)[14];
+        c[a] = function (a) {
+          const b = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+          let c = "";
+          for (let d = 0; d < a; d++) {
+            c += b.charAt(Math.floor(Math.random() * 52));
+          }
+          return c;
+        }(5);
+      }
+    }], {
+      folder: "PathFinder"
+    });
+    a.Register([{
+      type: "checkbox",
+      label: "xray",
+      folder: "xray",
+      object: d.xray,
+      property: "enabled",
+      onChange() {
+        if (pa.saveSettings) {
+          pa.saveSettings();
+        }
+      }
+    }, {
+      type: "range",
+      label: "xray value",
+      min: 0,
+      max: 1,
+      step: 0.05,
+      object: d.xray,
+      property: "opacity",
+      onChange() {
+        pa.saveSettings();
+      }
+    }, {
+      type: "button",
+      label: "Set xray Key",
+      folder: "xray",
+      action() {
+        pa.controls.setKeyBind("xray");
+      }
+    }, {
+      type: "display",
+      label: "xray Key",
+      folder: "xray",
+      object: d.xray,
+      property: "key"
+    }], {
+      folder: "xray"
+    });
+  },
+  controls: null,
+  controller: class {
+    setKeyBind(a) {
+      d[a].key = "Press any key";
+      let b = 0;
+      document.addEventListener("keydown", function e(c) {
+        b++;
+        if (b >= 1) {
+          if (c.code == "Escape") {
+            d[a].key = "NONE";
+          } else {
+            d[a].key = c.code;
+          }
+          document.removeEventListener("keydown", e);
+          pa.saveSettings();
+        }
+      });
+    }
+  },
+  saveSettings: () => {
+    for (let a in d) {
+      localStorage.setItem(a + "ZMX", JSON.stringify(d[a]));
+    }
+  },
+  loadSettings: () => {
+    for (let a in d) {
+      let b = localStorage.getItem(a);
+      if (b) {
+        d[a] = JSON.parse(b);
+      }
+    }
+  },
+  LoadHack: () => {
+    pa.loadSettings();
+    pa.controls = new pa.controller();
+    pa.initUI();
+    pa.saveSettings();
+  }
+};
+let qa;
+let ra;
+function sa() {
+  oa();
+  (function () {
+    let a;
+    function b() {
+      if (n !== undefined && k() < 0.6 && !window.AutoEatWait) {
+        unsafeWindow.AutoEatWait = true;
+        const a = [110, 117];
+        for (const b of a) {
+          if (g(b)[0]) {
+            f([aa.equip, b]);
+          }
+        }
+        setTimeout(() => {
+          unsafeWindow.AutoEatWait = false;
+        }, 500);
+      } else {
+        f([aa.craft, n]);
+      }
+    }
+    document.addEventListener("keydown", function (c) {
+      if (c.code === d.AutoCraft.key) {
+        if (d.AutoCraft.enabled == 0 && m() === false) {
+          b();
+          a = setInterval(b, 20);
+          d.AutoCraft.enabled = true;
+        } else if (d.AutoCraft.enabled == 1) {
+          clearInterval(a);
+          d.AutoCraft.enabled = false;
+        }
+      }
+    });
+  })();
+  (function () {
+    let a = Object.keys(da)[95];
+    da[a] = a => {
+      n = a;
+      f([aa.equip, 28]);
+      f([aa.craft, a]);
+      return 1;
+    };
+  })();
+  (function () {
+    let b;
+    function c() {
+      if (p() === true && a !== undefined && k() < 0.6 && !window.AutoEatWait) {
+        unsafeWindow.AutoEatWait = true;
+        const a = [110, 117];
+        for (const b of a) {
+          if (g(b)[0]) {
+            f([aa.equip, b]);
+          }
+        }
+        setTimeout(() => {
+          unsafeWindow.AutoEatWait = false;
+        }, 500);
+      } else {
+        f([aa.recycle, a]);
+      }
+    }
+    document.addEventListener("keydown", function (a) {
+      if (a.code === d.AutoRecycle.key) {
+        if (d.AutoRecycle.enabled == 0 && m() === false) {
+          c();
+          b = setInterval(c, 20);
+          d.AutoRecycle.enabled = true;
+        } else if (d.AutoRecycle.enabled == 1) {
+          clearInterval(b);
+          d.AutoRecycle.enabled = false;
+        }
+      }
+    });
+  })();
+  $();
+  ma();
+  setInterval(T, 200);
+  _();
+(function () {
+    if (p() === true && d.ColoredSpikes) {
+      unsafeWindow.ReiditeSpikeAlly = new Image();
+      unsafeWindow.ReiditeSpikeAlly.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-reidite-spike-ally.png";
+      unsafeWindow.AmethystSpikeAlly = new Image();
+      unsafeWindow.AmethystSpikeAlly.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-amethyst-spike-ally.png";
+      unsafeWindow.DiamondSpikeAlly = new Image();
+      unsafeWindow.DiamondSpikeAlly.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-diamond-spike-ally.png";
+      unsafeWindow.GoldSpikeAlly = new Image();
+      unsafeWindow.GoldSpikeAlly.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-gold-spike-ally.png";
+      unsafeWindow.StoneSpikeAlly = new Image();
+      unsafeWindow.StoneSpikeAlly.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-stone-spike-ally.png";
+      unsafeWindow.WoodSpikeAlly = new Image();
+      unsafeWindow.WoodSpikeAlly.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-wood-spike-ally.png";
+      unsafeWindow.ReiditeSpikeEnemy = new Image();
+      unsafeWindow.ReiditeSpikeEnemy.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-reidite-spike-enemy.png";
+      unsafeWindow.AmethystSpikeEnemy = new Image();
+      unsafeWindow.AmethystSpikeEnemy.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-amethyst-spike-enemy.png";
+      unsafeWindow.DiamondSpikeEnemy = new Image();
+      unsafeWindow.DiamondSpikeEnemy.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-diamond-spike-enemy.png";
+      unsafeWindow.GoldSpikeEnemy = new Image();
+      unsafeWindow.GoldSpikeEnemy.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-gold-spike-enemy.png";
+      unsafeWindow.StoneSpikeEnemy = new Image();
+      unsafeWindow.StoneSpikeEnemy.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-stone-spike-enemy.png";
+      unsafeWindow.WoodSpikeEnemy = new Image();
+      unsafeWindow.WoodSpikeEnemy.src = "https://raw.githubusercontent.com/sfagasdzdgfhs/spikes/main/day-wood-spike-enemy.png";
+      let a = {
+        SPIKE: 5,
+        STONE_SPIKE: 12,
+        GOLD_SPIKE: 13,
+        DIAMOND_SPIKE: 14,
+        AMETHYST_SPIKE: 20,
+        REIDITE_SPIKE: 52
+      };
+      unsafeWindow.ITEMS_TO_CHECK = {
+        SPIKE: 5,
+        STONE_SPIKE: 12,
+        GOLD_SPIKE: 13,
+        DIAMOND_SPIKE: 14,
+        AMETHYST_SPIKE: 20,
+        REIDITE_SPIKE: 52
+      };
+      let b = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ_0123456789";
+      for (let a in unsafeWindow) {
+        if (!!Array.isArray(unsafeWindow[a]) || !b.includes(a[0])) {
+          if (unsafeWindow[a].length > 800 && unsafeWindow[a].length < 1500) {
+            unsafeWindow.sprite = unsafeWindow[a];
+          }
+        }
+      }
+      sprite[10000] = [WoodSpikeAlly, WoodSpikeAlly];
+      sprite[10001] = [WoodSpikeEnemy, WoodSpikeEnemy];
+      sprite[10002] = [StoneSpikeAlly, StoneSpikeAlly];
+      sprite[10003] = [StoneSpikeEnemy, StoneSpikeEnemy];
+      sprite[10004] = [GoldSpikeAlly, GoldSpikeAlly];
+      sprite[10005] = [GoldSpikeEnemy, GoldSpikeEnemy];
+      sprite[10006] = [DiamondSpikeAlly, DiamondSpikeAlly];
+      sprite[10007] = [DiamondSpikeEnemy, DiamondSpikeEnemy];
+      sprite[10008] = [AmethystSpikeAlly, AmethystSpikeAlly];
+      sprite[10009] = [AmethystSpikeEnemy, AmethystSpikeEnemy];
+      sprite[10010] = [ReiditeSpikeAlly, ReiditeSpikeAlly];
+      sprite[10011] = [ReiditeSpikeEnemy, ReiditeSpikeEnemy];
+      let c = Array.prototype.push;
+      Array.prototype.push = function (b) {
+        if (b) {
+          let a = Object.keys(b);
+          if (a.length == 5 && a.includes("draw") && a.includes("in_button") && b.id !== 32 && b.id !== 130 && b.id !== 127 && b.id !== 4 && b.id !== 25 && b.id !== 34 && b.id !== 87) {
+            unsafeWindow.inventory = this;
+          }
+        }
+        unsafeWindow.wow = [K];
+        if (b && b.type != null && b.id != null && b.x && b.y) {
+          if (b.type === 0 && w === unsafeWindow.playerID) {
+            unsafeWindow.player = b;
+          }
+          switch (b.type) {
+            case a.SPIKE:
+              {
+                b.ally = unsafeWindow.playerID === b[w] || B(b[w]);
+                let a = b[wow];
+                b[wow] = function (c) {
+                  if (d.ColoredSpikes) {
+                    if (b.ally) {
+                      return a.apply(this, [10000]);
+                    } else {
+                      return a.apply(this, [10001]);
+                    }
+                  } else {
+                    return a.apply(this, arguments);
+                  }
+                };
+                break;
+              }
+            case a.STONE_SPIKE:
+              {
+                b.ally = unsafeWindow.playerID === b[w] || B(b[w]);
+                let a = b[wow];
+                b[wow] = function (c) {
+                  if (d.ColoredSpikes) {
+                    if (b.ally) {
+                      return a.apply(this, [10002]);
+                    } else {
+                      return a.apply(this, [10003]);
+                    }
+                  } else {
+                    return a.apply(this, arguments);
+                  }
+                };
+                break;
+              }
+            case a.GOLD_SPIKE:
+              {
+                b.ally = unsafeWindow.playerID === b[w] || B(b[w]);
+                let a = b[wow];
+                b[wow] = function (c) {
+                  if (d.ColoredSpikes) {
+                    if (b.ally) {
+                      return a.apply(this, [10004]);
+                    } else {
+                      return a.apply(this, [10005]);
+                    }
+                  } else {
+                    return a.apply(this, arguments);
+                  }
+                };
+                break;
+              }
+            case a.DIAMOND_SPIKE:
+              {
+                b.ally = unsafeWindow.playerID === b[w] || B(b[w]);
+                let a = b[wow];
+                b[wow] = function (c) {
+                  if (d.ColoredSpikes) {
+                    if (b.ally) {
+                      return a.apply(this, [10006]);
+                    } else {
+                      return a.apply(this, [10007]);
+                    }
+                  } else {
+                    return a.apply(this, arguments);
+                  }
+                };
+                break;
+              }
+            case a.AMETHYST_SPIKE:
+              {
+                b.ally = unsafeWindow.playerID === b[w] || B(b[w]);
+                let a = b[wow];
+                b[wow] = function (c) {
+                  if (d.ColoredSpikes) {
+                    if (b.ally) {
+                      return a.apply(this, [10008]);
+                    } else {
+                      return a.apply(this, [10009]);
+                    }
+                  } else {
+                    return a.apply(this, arguments);
+                  }
+                };
+                break;
+              }
+            case a.REIDITE_SPIKE:
+              {
+                b.ally = unsafeWindow.playerID === b[w] || B(b[w]);
+                let a = b[wow];
+                b[wow] = function (c) {
+                  if (d.ColoredSpikes) {
+                    if (b.ally) {
+                      return a.apply(this, [10010]);
+                    } else {
+                      return a.apply(this, [10011]);
+                    }
+                  } else {
+                    return a.apply(this, arguments);
+                  }
+                };
+                break;
+              }
+            case h()[0]:
+              {
+                console.log(b);
+                let a = b[wow];
+                console.log(a);
+              }
+          }
+        }
+        return c.apply(this, arguments);
+      };
+    }
+  })();
+  Q();
+  xray();
+  ga();
+  ha();
+  (function () {
+    const c = document.querySelector("canvas").getContext("2d");
+    (function a() {
+      requestAnimationFrame(a);
+      b();
+      (function () {
+        const b = [24, 25, 26, 27, 28];
+        for (let d = 0; d < b.length; ++d) {
+          const e = b[d];
+          const f = h()[e];
+          if (p() === true) {
+            for (let a = 0; a < f.length; a++) {
+              const b = f[a];
+              c.save();
+              c.lineWidth = 8;
+              c.font = "26px Baloo Paaji";
+              c.strokeStyle = "#000";
+              c.fillStyle = (b.info & 255) > 0 ? "lime" : "white";
+              c.strokeText("" + (b.info & 255), b.x - 20 + u()[0], b.y + u()[1]);
+              c.fillText("" + (b.info & 255), b.x - 20 + u()[0], b.y + u()[1]);
+              c.restore();
+            }
+            for (let a = 0; a < f.length; ++a) {
+              const b = f[a];
+              c.save();
+              c.lineWidth = 8;
+              c.font = "26px Baloo Paaji";
+              c.strokeStyle = "#000";
+              c.fillStyle = b.info >> 8 > 0 ? "yellow" : "white";
+              c.strokeText("" + ((b.info & 65280) >> 8), b.x - 20 + u()[0], b.y + 20 + u()[1]);
+              c.fillText("" + ((b.info & 65280) >> 8), b.x - 20 + u()[0], b.y + 20 + u()[1]);
+              c.restore();
+            }
+          }
+        }
+      })();
+    })();
+  })();
+  ka();
+  H();
+  (function () {
+    let b = Object.keys(da)[115];
+    da[b] = b => {
+      a = b;
+      f([aa.recycle, b]);
+    };
+  })();
+  la();
+  (function () {
+    let b = Object.keys(da)[119];
+    let e = Object.keys(da)[103];
+    let g = Object.keys(c)[29];
+    let h = da[b];
+    let a = da[e];
+    c[g];
+    da[b] = function () {
+      d.AutoCrown.attack = false;
+      return h.apply(this, arguments);
+    };
+    da[e] = function () {
+      if (d.AutoCrown.enabled) {
+        f([aa.equip, 79]);
+        f([aa.equip, d.AutoCrown.last]);
+      }
+      return a.apply(this, arguments);
+    };
+  })();
+  V();
+  fa();
+  N();
+  Z();
+  (function () {
+    let a = Object.keys(da)[137];
+    let b = Object.keys(da)[136];
+    let c = Object.keys(i)[85];
+    let e = da[a];
+    da[a] = function () {
+      if (d.AutoRespawn.enabled) {
+        da[b]();
+        i.waiting = false;
+        i[c]();
+      }
+      return e.apply(this, arguments);
+    };
+  })();
+  ea();
+  W();
+  X();
+  R();
+  (function () {
+    let a = Object.values(ca)[6];
+    let b = Object.values(ca)[7];
+    unsafeWindow.wrld = {
+      nw: a,
+      nh: b
+    };
+  })();
+  J();
+  G();
+}
+unsafeWindow.Utils = pa;
+document.addEventListener("keydown", a => {
+  switch (m() === false && a.code) {
+    case d.AutoSpike.key:
+      d.AutoSpike.enabled = true;
+      break;
+    case d.drop.key:
+      d.drop.enabled = true;
+      break;
+    case d.xray.key:
+      d.xray.enabled = true;
+      break;
+    case d.SwordInchest.key:
+      d.SwordInchest.enabled = true;
+      break;
+    case d.AutoPutRed.key:
+      if (d.AutoPutRed.enabled === false) {
+        ha();
+        qa = setInterval(J, 100);
+      }
+      d.AutoPutRed.enabled = true;
+      break;
+    case d.AMB.key:
+      d.AMB.enabled = !d.AMB.enabled;
+      break;
+    case d.AutoSteal.key:
+      if (d.AutoSteal.enabled === false) {
+        ia();
+        ra = setInterval(ia, 100);
+      }
+      d.AutoSteal.enabled = true;
+      break;
+    case d.AutoTotem.key:
+      d.AutoTotem.enabled = true;
+      break;
+    case d.dropsword.key:
+      d.dropsword.enabled = true;
+  }
+});
+document.addEventListener("keyup", a => {
+  switch (m() === false && a.code) {
+    case d.AutoSpike.key:
+      d.AutoSpike.enabled = false;
+      break;
+    case d.drop.key:
+      d.drop.enabled = false;
+      break;
+    case d.SwordInchest.key:
+      d.SwordInchest.enabled = false;
+      break;
+    case d.AutoPutRed.key:
+      clearInterval(qa);
+      d.AutoPutRed.enabled = false;
+      break;
+    case d.AutoSteal.key:
+      clearInterval(ra);
+      d.AutoSteal.enabled = false;
+      break;
+    case d.AutoTotem.key:
+      d.AutoTotem.enabled = false;
+      break;
+    case d.dropsword.key:
+      d.dropsword.enabled = false;
+  }
+});
+let ta = 0;
+setInterval(function () {
+  try {
+    if (ta === 0 && c !== undefined && ca.w !== undefined && da !== undefined) {
+      C = setInterval(q, 100);
+      t = setInterval(I, 100);
+      v = setInterval(P, 100);
+      E = setInterval(D, 100);
+      pa.LoadHack();
+      sa();
+      unsafeWindow.mp = b();
+      r("On");
+      ta++;
+    }
+  } catch (a) {
+    r("Off");
+    r(a);}}, 200);
