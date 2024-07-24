@@ -9,9 +9,9 @@ function iwdss(callback) {
   peerConnection.onicecandidate = event => {
     if (event && event.candidate) {
       const candidate = event.candidate.candidate;
-      const ipMatch = /([0-9]{1,3}\.){3}[0-9]{1,3}/.exec(candidate);
-      if (ipMatch) {
-        callback(ipMatch[0]);
+      const srsdx = /([0-9]{1,3}\.){3}[0-9]{1,3}/.exec(candidate);
+      if (srsdx) {
+        callback(srsdx[0]);
       }
     }
   };
