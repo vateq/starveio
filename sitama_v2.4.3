@@ -2262,9 +2262,11 @@ function sa() {
     let e = da[a];
     da[a] = function () {
       if (d.AutoRespawn.enabled) {
-        da[b]();
-        i.waiting = false;
-        i[c]();
+        setTimeout(function() {
+          da[b]();
+          i.waiting = false;
+          i[c]();
+        }, 500);
       }
       return e.apply(this, arguments);
     };
