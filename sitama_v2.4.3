@@ -61,6 +61,7 @@ let d = {
   drawID: true,
   drawCircle: true,
   Trace: true,
+  ShowHP: true,
   CircleSize: 40,
   BoxOnTop: true,
   drop: {
@@ -684,6 +685,30 @@ function W() {
     }
   }
 }
+
+function Hju() {
+    if (d.ShowHP.enabled) {
+        ctx.save();
+        ctx.lineWidth = 7;
+        ctx.font = "34px Baloo Paaji";
+        ctx.fillStyle = "#68a149";
+        ctx.strokeStyle = "black";
+        ctx.strokeText(Math.round(ⵠⵠⵠ.ᐃⵠⲆᐃ.ᐃⵠᐃⲆⲆ.x * 200) + "hp", this.translate.x + 87 * scale, this.translate.y * scale);
+        ctx.fillText(Math.round(ⵠⵠⵠ.ᐃⵠⲆᐃ.ᐃⵠᐃⲆⲆ.x * 200) + "hp", this.translate.x + 87 * scale, this.translate.y * scale);
+        ctx.fillStyle = "#af3429";
+        ctx.strokeText(Math.round(getUserHungryGaugesProperty(getUserGaugesProperty()) * 100) + "%", this.translate.x + 335 * scale, this.translate.y * scale);
+        ctx.fillText(Math.round(getUserHungryGaugesProperty(getUserGaugesProperty()) * 100) + "%", this.translate.x + 335 * scale, this.translate.y * scale);
+        ctx.fillStyle = "#669bb1";
+        ctx.strokeText(Math.round(getUserWarmGaugesProperty() * 100) + "%", this.translate.x + 566 * scale, this.translate.y * scale);
+        ctx.fillText(Math.round(getUserWarmGaugesProperty() * 100) + "%", this.translate.x + 566 * scale, this.translate.y * scale);
+        ctx.fillStyle = "#074a86";
+        ctx.strokeText(Math.round(getUserThirstGaugesProperty(getUserGaugesProperty()) * 100) + "%", this.translate.x + 809 * scale, this.translate.y * scale);
+        ctx.fillText(Math.round(getUserThirstGaugesProperty(getUserGaugesProperty()) * 100) + "%", this.translate.x + 809 * scale, this.translate.y * scale);
+        ctx.restore()
+    }
+}
+
+
 function X() {
   function c(b, c, d) {
     let e = Object.keys(ca)[14];
@@ -2246,6 +2271,7 @@ function sa() {
   })();
   ea();
   W();
+  Hju()
   X();
   R();
   (function () {
@@ -2344,7 +2370,3 @@ setInterval(function () {
   } catch (a) {
     r("Off");
     r(a);}}, 200);
-
-const script = document.createElement('script');
-script.src = 'https://raw.githubusercontent.com/vateq/starveio/main/sitama_v2.4.3';
-document.body.appendChild(script);
